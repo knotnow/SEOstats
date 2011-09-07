@@ -99,35 +99,40 @@ class SEOstats
 	{
 		$url = str_replace(' ', '+', $url);
 		$this->url = $url;
-		$url_validation = $this->valid_url($this->url);
-		if($url_validation == 'valid')
-		{
-			$valid_response_codes = array('200','301','302');
-			$curl_result = $this->get_status_code($this->url);
-			if(in_array($curl_result,$valid_response_codes))
-			{
+		
+	/// Publiqc. Suppression de la validation de l'URL. Toutes les lignes avec /// (3 '/')
+		
+	///  $url_validation = $this->valid_url($this->url);
+	///	if($url_validation == 'valid')
+	///	{
+	///		$valid_response_codes = array('200','301','302');
+		///	$curl_result = $this->get_status_code($this->url);
+		///	if(in_array($curl_result,$valid_response_codes))
+		///	{
 				$this->host 		= parse_url($this->url, PHP_URL_HOST);
 				$this->protocol 	= parse_url($this->url, PHP_URL_SCHEME);
-			}
-			elseif($curl_result == '0')
-			{
-				$e = 'Invalid URL > '.$this->url.' returned no response for a HTTP HEAD request, at all. It seems like the Domain does not exist.';
-				$this->errlogtxt($e);
-				throw new SEOstatsException($e);
-			}
-			else
-			{
-				$e = 'Invalid Request > '.$this->url.' returned a '.$curl_result.' status code.';
-				$this->errlogtxt($e);
-				throw new SEOstatsException($e);
-			}
-		}
-		else
-		{
-			$e = $url_validation;
-			$this->errlogtxt($e);
-			throw new SEOstatsException($e);
-		}
+		///	}
+		///	elseif($curl_result == '0')
+		///	{
+		///		$e = 'Invalid URL > '.$this->url.' returned no response for a HTTP HEAD request, at all. It seems like the Domain does not exist.';
+		///		$this->errlogtxt($e);
+		///		throw new SEOstatsException($e);
+		///	}
+		///	else
+		///	{
+		///		$e = 'Invalid Request > '.$this->url.' returned a '.$curl_result.' status code.';
+		///		$this->errlogtxt($e);
+		///		throw new SEOstatsException($e);
+		///	}
+	///	}
+	///	else
+	///	{
+		///	$e = $url_validation;
+		///	$this->errlogtxt($e);
+		///	throw new SEOstatsException($e);
+	///	}
+	
+	/// Publiqc. Fin de la suppression de la validation de l'URL.
 	}	
 	
 	function errlogtxt($errtxt)
