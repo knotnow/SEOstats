@@ -99,6 +99,7 @@ class SEOstats
 	{
 		$url = str_replace(' ', '+', $url);
 		$this->url = $url;
+		$this->url2 = $str_replace('http://', '', $url);
 		
 	/// Publiqc. Suppression de la validation de l'URL. Toutes les lignes avec /// (3 '/')
 		
@@ -461,7 +462,7 @@ class SEOstats
      */
     public function Seomoz_Domainauthority_Array()
     {
-        return SEOstats_Seomoz::Seomoz_Authority($this->host);
+        return SEOstats_Seomoz::Seomoz_Authority($this->url2);
     }
 
     /**
@@ -473,7 +474,7 @@ class SEOstats
      */
     public function Seomoz_Linkdetails_Array()
     {
-        return SEOstats_Seomoz::Seomoz_Links($this->host);
+        return SEOstats_Seomoz::Seomoz_Links($this->url2);
     }
 
     /**
