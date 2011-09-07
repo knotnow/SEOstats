@@ -87,6 +87,14 @@ class SEOstats
 	public $url;
 	
 	/**
+	 * Object URL2
+	 *
+	 * @access		public
+	 * @var			string
+	 */
+	public $url2;
+	
+	/**
 	 * Constructor
 	 *
 	 * Checks for valid URL syntax and server response.
@@ -95,11 +103,11 @@ class SEOstats
 	 * @param		string		$url		String, containing the initialized 
 	 *                                      object URL.
 	 */		
-	public function __construct($url)
+	public function __construct($url, $url2)
 	{
 		$url = str_replace(' ', '+', $url);
 		$this->url = $url;
-		$this->url2 = $str_replace('http://', '', $url);
+		$this->url2 = str_replace('http://', '', $url);
 		
 	/// Publiqc. Suppression de la validation de l'URL. Toutes les lignes avec /// (3 '/')
 		
